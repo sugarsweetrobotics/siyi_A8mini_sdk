@@ -11,7 +11,7 @@
 #'Programming Language :: Python :: 3',  # Python 版本
 #'License :: OSI Approved :: MIT License',  # License 类型
 #'Operating System :: OS Independent',
-﻿
+#encoding=utf-8
 import socket
 from core import *
 from utils import *
