@@ -1,5 +1,5 @@
 ﻿import inspect
-from crc16 import CRC16
+from .crc16 import CRC16
 
 class CommandLine:
     def __init__(self, STX=[0x55, 0x66], CTRL=[0x01], SEQ=[0x00,0x00], CMD_ID=[], DATA=[]):
