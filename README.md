@@ -4,6 +4,10 @@
 针对 SIYI A8mini 云台相机开发的一款 Python SDK，方便调用云台功能。
 
 ## Usage
+### 依赖项：pynput ，用于监测键盘输入
+```bash
+pip install pynput
+```
 
 ### 1. 直接使用源代码
 
@@ -56,3 +60,17 @@ siyi_controler.close()
 | `format_SDcard()`              | 无                              | 格式化 SD 卡。                                                                                                                              |
 | `device_restart(camera_restart, gimbal_restart)` | `camera_restart`: 0 或 1；`gimbal_restart`: 0 或 1 | 控制相机和云台重启，通过设置参数 0 或 1，确定是否重启。                                                                                     |
 | `close()`                      | 无                              | 结束控制，程序最后调用。                                                                                                                    |
+
+
+## Author
+
+- Institution: Shanghai Jiao Tong University
+- Email: [zhangpengcheng@sjtu.edu.cn](mailto:zhangpengcheng@sjtu.edu.cn)
+- GitHub: [https://github.com/Percylevent](https://github.com/Percylevent)
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
