@@ -11,7 +11,7 @@ pip install pynput
 
 ### 1. 直接使用源代码
 
-将整个项目 clone 到同一个文件夹，进入 `test.py` 文件，更改对应的相机 IP 地址和端口，然后运行：
+将整个项目 clone 到本地，进入 `test.py` 文件，更改对应的相机 IP 地址和端口，然后运行：
 
 ```bash
 python test.py
@@ -19,10 +19,10 @@ python test.py
 
 ### 2. 使用 pip 安装包（推荐）
 
-从 [release](https://github.com/your-repo/releases) 中下载 `siyi_A8mini_sdk-0.1.0-py3-none-any.whl` 到本地，然后运行：
+从 [release](https://github.com/your-repo/releases) 中下载 `siyiA8mini-0.1.0-py3-none-any.whl` 到本地，然后运行：
 
 ```bash
-pip install siyi_A8mini_sdk-0.1.0-py3-none-any.whl
+pip install siyiA8mini-0.1.0-py3-none-any.whl
 ```
 
 然后新建 `test.py`，写入示例程序（Example），运行：
@@ -31,10 +31,10 @@ pip install siyi_A8mini_sdk-0.1.0-py3-none-any.whl
 
 ```python
 # 引入包
-from siyi_A8mini_sdk.siyisdk import SIYISDK
+from siyiA8mini import siyisdk
 
 # 实例化
-siyi_controler = SIYISDK("192.168.1.25", 37260, 1024)
+siyi_controler = siyisdk.SIYISDK("192.168.1.25", 37260, 1024)
 
 # 启动键盘控制功能
 siyi_controler.keep_turn()
