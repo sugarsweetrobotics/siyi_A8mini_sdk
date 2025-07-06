@@ -214,15 +214,12 @@ class SIYISDK:
         
     def get_position(self):
         """
-        获取云台姿态
+        Get Position (Attitude) of Camera Pan-Tilt-Roll
+        
+        :returns: dictionary like {"yaw":0.0,"roll":0.0,"pitch":0.0,"yaw_velocity":0.0,"roll_velocity":0.0,"pitch_velocity":0.0}
         """
         cmd=CommandLine(CMD_ID=[0x0D],DATA=[])
-        send_buf=cmd.create_send_buf()
-         #发送并接受数据
-        recv_date=self.send_receive_date(send_buf) 
-          
-         # 十六进制形式打印接收到的数据
-        cmd.recv_date_parser(recv_date)
+        return cmd.recv_date_parser(self.send_receive_date(cmd.create_send_buf()))
         
     def turn_to(self,yaw,pitch):
         """

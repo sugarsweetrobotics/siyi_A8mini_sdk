@@ -66,8 +66,16 @@ class CommandLine:
             yaw_velocity=int.from_bytes(date[6:8], byteorder='little')/10
             pitch_velocity=int.from_bytes(date[8:10], byteorder='little')/10
             roll_velocity=int.from_bytes(date[8:10], byteorder='little')/10
-            print(f"偏航角:{yaw};  俯仰角:{pitch}:  横滚角：{roll};  偏航角速度:{yaw_velocity};  俯仰角速度:{pitch_velocity};  横滚角速度:{roll_velocity}")
-
+            # print(f"偏航角:{yaw};  俯仰角:{pitch}:  横滚角：{roll};  偏航角速度:{yaw_velocity};  俯仰角速度:{pitch_velocity};  横滚角速度:{roll_velocity}")
+            return {
+                "yaw": yaw,
+                "pitch": pitch,
+                "roll": roll,
+                "yaw_velocity": yaw_velocity,
+                "pitch_velocity": pitch_velocity,
+                "roll_velocity": roll_velocity,
+            }
+            
         elif(caller_function_name=="get_config_info"):
             hdr_dict={0x00:"关闭",0x01:"开启"}
             record_dict={0x00:"未开启录像",
