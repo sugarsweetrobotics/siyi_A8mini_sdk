@@ -3,7 +3,6 @@ import socket
 from .core import *
 from .utils import *
 import time
-# from pynput import keyboard
 
 class SIYISDK:
     def __init__(self, SERVER_IP, SERVER_PORT, BUFF_SIZE):
@@ -66,8 +65,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         #解析接收到的数据
         cmd.recv_date_parser(recv_date);
         
@@ -85,8 +82,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         #解析接收到的数据
         cmd.recv_date_parser(recv_date);
 
@@ -227,8 +222,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         cmd.recv_date_parser(recv_date)
         
     def turn_to(self,yaw,pitch):
@@ -249,8 +242,6 @@ class SIYISDK:
             #发送并接受数据
             recv_date=self.send_receive_date(send_buf) 
              # 十六进制形式打印接收到的数据
-            print("Received HEX data: ", end="")
-            print(" ".join(f"{byte:02x}" for byte in recv_date))
              #延迟一秒，等待动作完成
             time.sleep(1.5)
             
@@ -271,8 +262,6 @@ class SIYISDK:
                 send_buf=cmd.create_send_buf()
                 recv_date=self.send_receive_date(send_buf) 
                 # 十六进制形式打印接收到的数据
-                print("Received HEX data: ", end="")
-                print(" ".join(f"{byte:02x}" for byte in recv_date))
                 #延迟一秒，等待动作完成
                 time.sleep(1.5)
             else:
@@ -289,8 +278,6 @@ class SIYISDK:
                 send_buf=cmd.create_send_buf()
                 recv_date=self.send_receive_date(send_buf) 
                 # 十六进制形式打印接收到的数据
-                print("Received HEX data: ", end="")
-                print(" ".join(f"{byte:02x}" for byte in recv_date))
                 #延迟一秒，等待动作完成
                 time.sleep(1.5)
             else:
@@ -310,8 +297,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         #解析接收到的数据
         cmd.recv_date_parser(recv_date);
         
@@ -326,8 +311,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         #解析接收到的数据
         cmd.recv_date_parser(recv_date);
         
@@ -348,8 +331,6 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
         #解析接收到的数据
         cmd.recv_date_parser(recv_date);
 
@@ -374,9 +355,7 @@ class SIYISDK:
         recv_date=self.send_receive_date(send_buf) 
           
          # 十六进制形式打印接收到的数据
-        print("Received HEX data: ", end="")
-        print(" ".join(f"{byte:02x}" for byte in recv_date))
-
+        
 
     def close(self):
         # 关闭套接字
