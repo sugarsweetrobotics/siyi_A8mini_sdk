@@ -5,12 +5,7 @@ from siyiA8mini import siyisdk
 
 
 def main():
-    host = "192.168.144.25"
-    port = 37260
-    bufsize = 1000
-
-
-    cam = siyisdk.SIYISDK(host, port, bufsize)
+    cam = siyisdk.SIYISDK(SERVER_IP="192.168.144.25", SERVER_PORT=37260, BUFF_SIZE=1000)
     print('get_position:', cam.get_position())
     
     
