@@ -219,7 +219,9 @@ class SIYISDK:
         :returns: dictionary like {"yaw":0.0,"roll":0.0,"pitch":0.0,"yaw_velocity":0.0,"roll_velocity":0.0,"pitch_velocity":0.0}
         """
         cmd=CommandLine(CMD_ID=[0x0D],DATA=[])
-        return cmd.recv_date_parser(self.send_receive_date(cmd.create_send_buf()))
+        send_buf = cmd.create_send_buf()
+        recv_date = self.send_receive_date(send_buf)
+        return cmd.recv_date_parser(recv_date)
         
     def turn_to(self,yaw,pitch):
         """

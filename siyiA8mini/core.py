@@ -37,7 +37,7 @@ class CommandLine:
         caller_function_name = inspect.stack()[1].function #调用此函数的函数名称
         datelength=int.from_bytes(recv_data[3:4], byteorder='little') #计算数据长度
         date=recv_data[8:8+datelength] #获取数据段
-        
+        cmd_id=recv_data[7]
         if(caller_function_name=="get_device_hardwareID"):
             ID_dict={0x6B:"ZR10",
                      0x73:"A8 mini",
@@ -60,12 +60,24 @@ class CommandLine:
             print(f"当前模式: {mode}")
              
         elif(caller_function_name=="get_position"):
-            yaw=int.from_bytes(date[:2], byteorder='little')/10
-            pitch=int.from_bytes(date[2:4], byteorder='little')/10
-            roll=int.from_bytes(date[4:6], byteorder='little')/10
-            yaw_velocity=int.from_bytes(date[6:8], byteorder='little')/10
-            pitch_velocity=int.from_bytes(date[8:10], byteorder='little')/10
-            roll_velocity=int.from_bytes(date[8:10], byteorder='little')/10
+            yaw=int.from_bytes(date[:2], byteorder='little', signed=True)/10
+            pitch=int.from_bytes(date[2:4], byteorder='little', signed=True)/10
+            roll=int.from_bytes(date[4:6], byteorder='little', signed=True)/10
+            yaw_velocity=int.from_bytes(date[6:8], byteorder='little', signed=True)/10
+            pitch_velocity=int.from_bytes(date[8:10], byteorder='little', signed=True)/10
+            roll_velocity=int.from_bytes(date[8:10], byteorder='little', signed=True)/10
+            
+            # 2025/07/03 by ysuga
+            # siyiA8mini camera DOES send wrong values.
+            # sometimes, the value is inverted +/-180 degree. I can not understand why.
+            # The range of yaw and pitch is restricted, so the value is weird, output is inverted.
+            # This is not true solution of this bug.
+            if yaw < -140.0: yaw = yaw + 180.0
+            if yaw > +140.0: yaw = yaw - 180.0
+            if pitch < -100.0: pitch = pitch + 180.0
+            if pitch > +100.0: pitch = pitch - 180.0
+            if roll < -100.0: roll = roll + 180.0
+            if roll > +100.0: roll = roll - 180.0
             # print(f"偏航角:{yaw};  俯仰角:{pitch}:  横滚角：{roll};  偏航角速度:{yaw_velocity};  俯仰角速度:{pitch_velocity};  横滚角速度:{roll_velocity}")
             return {
                 "yaw": yaw,
