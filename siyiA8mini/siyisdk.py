@@ -3,7 +3,7 @@ import socket
 from .core import *
 from .utils import *
 import time
-from pynput import keyboard
+# from pynput import keyboard
 
 class SIYISDK:
     def __init__(self, SERVER_IP, SERVER_PORT, BUFF_SIZE):
@@ -123,14 +123,14 @@ class SIYISDK:
             nonlocal speed_yaw, speed_pitch,turn # 声明使用外部函数的局部变量
             try:
 
-                if key ==keyboard.Key.up:#当按下↑ 
-                    turn[1]= speed_pitch
-                if key ==keyboard.Key.down:#当按下↓ 
-                    turn[1]= speed_pitch*(-1)
-                if key ==keyboard.Key.left:#当按下← 
-                    turn[0]= speed_yaw*(-1)
-                if key ==keyboard.Key.right:#当按下→
-                    turn[0]= speed_yaw
+                # if key ==keyboard.Key.up:#当按下↑ 
+                #     turn[1]= speed_pitch
+                # if key ==keyboard.Key.down:#当按下↓ 
+                #     turn[1]= speed_pitch*(-1)
+                # if key ==keyboard.Key.left:#当按下← 
+                #     turn[0]= speed_yaw*(-1)
+                # if key ==keyboard.Key.right:#当按下→
+                #     turn[0]= speed_yaw
                 camera_move()
             except AttributeError:
                 pass
@@ -144,14 +144,14 @@ class SIYISDK:
                 return False  # 返回 False 会自动停止监听器
                 
             try:
-                if key==keyboard.Key.up:
-                    turn[1]=0
-                if key ==keyboard.Key.down:
-                    turn[1]=0
-                if key ==keyboard.Key.left:
-                    turn[0]=0
-                if key ==keyboard.Key.right:
-                    turn[0]=0
+                # if key==keyboard.Key.up:
+                #     turn[1]=0
+                # if key ==keyboard.Key.down:
+                #     turn[1]=0
+                # if key ==keyboard.Key.left:
+                #     turn[0]=0
+                # if key ==keyboard.Key.right:
+                #     turn[0]=0
                 camera_move()
                 #使用WSAD加减速度，步长为10    
                 if key.char =="w":
@@ -189,8 +189,8 @@ class SIYISDK:
 
         
         # 创建并启动监听器，非阻塞模式
-        listener = keyboard.Listener(on_press=on_press, on_release=on_release)
-        listener.start()  # 启动监听器（非阻塞）
+        #listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+        #listener.start()  # 启动监听器（非阻塞）
         print("进入手动控制模式，↑↓←→控制摄像头移动，WSAD控制转动速度，ESC退出控制模式")
         #listener.join()  # 等待监听器停止
         # 使用控制变量保持主线程运行，避免退出
